@@ -122,3 +122,6 @@ D:\git\Announcements\Announcements\bin\Microsoft.AspNet.Identity.EntityFramework
 D:\git\Announcements\Announcements\obj\Debug\Announcements.csprojResolveAssemblyReference.cache
 D:\git\Announcements\Announcements\obj\Debug\Announcements.dll
 D:\git\Announcements\Announcements\obj\Debug\Announcements.pdb
+D:\git\Announcements\Announcements\bin\Repository.dll
+D:\git\Announcements\Announcements\bin\Repository.pdb
+D:\git\Announcements\Announcements\bin\Repository.dll.config

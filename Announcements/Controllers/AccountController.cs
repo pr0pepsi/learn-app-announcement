@@ -8,7 +8,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Announcements.Models;
+using Repository.Models;
+using Repository.Models.View;
 
 namespace Announcements.Controllers
 {
