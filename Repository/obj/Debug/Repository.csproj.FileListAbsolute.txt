@@ -50,9 +50,7 @@ D:\git\Announcements\Repository\bin\System.Web.Razor.xml
 D:\git\Announcements\Repository\bin\System.Web.WebPages.xml
 D:\git\Announcements\Repository\bin\System.Web.WebPages.Deployment.xml
 D:\git\Announcements\Repository\bin\System.Web.WebPages.Razor.xml
-D:\git\Announcements\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 D:\git\Announcements\Repository\obj\Debug\Repository.dll
 D:\git\Announcements\Repository\obj\Debug\Repository.pdb
-D:\git\Announcements\Repository\obj\Debug\Repository.Migrations.newDb.resources
+D:\git\Announcements\Repository\obj\Debug\Repository.Migrations.starts.resources
 D:\git\Announcements\Repository\obj\Debug\Repository.csproj.GenerateResource.Cache
-D:\git\Announcements\Repository\obj\Debug\Repository.Migrations.updatemodeluser.resources

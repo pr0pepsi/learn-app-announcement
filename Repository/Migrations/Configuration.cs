@@ -17,6 +17,7 @@ namespace Repository.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
+
         protected override void Seed(Repository.Models.AnnouncementContext context)
         {
             //for security - loss of migrations- create default data in Db
@@ -33,9 +34,9 @@ namespace Repository.Migrations
             {
                 var annCat = new Announcement_Category()
                 {
-                    Id=i,
-                    AnnouncementId = i/2+1,
-                    CategoryId = i/2+1
+                    Id = i,
+                    AnnouncementId = i / 2 + 1,
+                    CategoryId = i / 2 + 1
                 };
                 context.Set<Announcement_Category>().AddOrUpdate(annCat);
             }
@@ -49,11 +50,11 @@ namespace Repository.Migrations
                 var category = new Category()
                 {
                     Id = i,
-                    Name = "Nazwa kategorii"+ i.ToString(),
+                    Name = "Nazwa kategorii" + i.ToString(),
                     TextContent = "Treœæ og³oszenia" + i.ToString(),
-                    MetaTitle = "Tytul kategorii"+ i.ToString(),
-                    MetaDescription = "Opis kategorii"+ i.ToString(),
-                    MetaWords = "S³owa kluczowe do kategorii"+ i.ToString(),
+                    MetaTitle = "Tytul kategorii" + i.ToString(),
+                    MetaDescription = "Opis kategorii" + i.ToString(),
+                    MetaWords = "S³owa kluczowe do kategorii" + i.ToString(),
                     ParentId = i
                 };
                 context.Set<Category>().AddOrUpdate(category);
@@ -89,7 +90,7 @@ namespace Repository.Migrations
 
             if (!context.User.Any(u => u.UserName == "Admin"))
             {
-                var user = new User {UserName = "Admin",Age = 12};
+                var user = new User {UserName = "Admin", Age = 12};
                 var adminResult = manager.Create(user, "12345678");
 
                 if (adminResult.Succeeded)

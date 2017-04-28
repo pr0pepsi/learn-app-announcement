@@ -107,16 +107,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201704281014499_newDb.cs" />
-    <Compile Include="Migrations\201704281014499_newDb.Designer.cs">
-      <DependentUpon>201704281014499_newDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704281116219_update-model-user.cs" />
-    <Compile Include="Migrations\201704281116219_update-model-user.Designer.cs">
-      <DependentUpon>201704281116219_update-model-user.cs</DependentUpon>
+    <Compile Include="Migrations\201704281539269_starts.cs" />
+    <Compile Include="Migrations\201704281539269_starts.Designer.cs">
+      <DependentUpon>201704281539269_starts.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Announcement.cs" />
@@ -128,11 +125,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704281014499_newDb.resx">
-      <DependentUpon>201704281014499_newDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704281116219_update-model-user.resx">
-      <DependentUpon>201704281116219_update-model-user.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704281539269_starts.resx">
+      <DependentUpon>201704281539269_starts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
