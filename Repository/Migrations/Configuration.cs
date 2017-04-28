@@ -1,0 +1,115 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Repository.Models;
+
+namespace Repository.Migrations
+{
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<Repository.Models.AnnouncementContext>
+    {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
+        }
+
+        protected override void Seed(Repository.Models.AnnouncementContext context)
+        {
+            //for security - loss of migrations- create default data in Db
+            SeedRoles(context);
+            SeedUsers(context);
+            SeedAnnouncements(context);
+            SeedCategories(context);
+            SeedAnnouncement_Category(context);
+        }
+
+        private void SeedAnnouncement_Category(AnnouncementContext context)
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                var annCat = new Announcement_Category()
+                {
+                    Id=i,
+                    AnnouncementId = i/2+1,
+                    CategoryId = i/2+1
+                };
+                context.Set<Announcement_Category>().AddOrUpdate(annCat);
+            }
+            context.SaveChanges();
+        }
+
+        private void SeedCategories(AnnouncementContext context)
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                var category = new Category()
+                {
+                    Id = i,
+                    Name = "Nazwa kategorii"+ i.ToString(),
+                    TextContent = "Treœæ og³oszenia" + i.ToString(),
+                    MetaTitle = "Tytul kategorii"+ i.ToString(),
+                    MetaDescription = "Opis kategorii"+ i.ToString(),
+                    MetaWords = "S³owa kluczowe do kategorii"+ i.ToString(),
+                    ParentId = i
+                };
+                context.Set<Category>().AddOrUpdate(category);
+            }
+            context.SaveChanges();
+        }
+
+        private void SeedAnnouncements(AnnouncementContext context)
+        {
+            var userId = context.Set<User>()
+                .Where(u => u.UserName == "Admin")
+                .FirstOrDefault().Id;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                var announcement = new Announcement()
+                {
+                    Id = i,
+                    UserId = userId,
+                    TextContent = "Treœæ og³oszenia" + i.ToString(),
+                    Title = "Tytu³ og³oszenia" + i.ToString(),
+                    AddDateTime = DateTime.Now.AddDays(-i)
+                };
+                context.Set<Announcement>().AddOrUpdate(announcement);
+            }
+            context.SaveChanges();
+        }
+
+        private void SeedUsers(AnnouncementContext context)
+        {
+            var store = new UserStore<User>(context);
+            var manager = new UserManager<User>(store);
+
+            if (!context.User.Any(u => u.UserName == "Admin"))
+            {
+                var user = new User {UserName = "Admin",Age = 12};
+                var adminResult = manager.Create(user, "12345678");
+
+                if (adminResult.Succeeded)
+                {
+                    manager.AddToRole(user.Id, "Admin");
+                }
+            }
+        }
+
+        private void SeedRoles(AnnouncementContext context)
+        {
+            var roleManager = new
+                RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+                (new RoleStore<IdentityRole>());
+            if (!roleManager.RoleExists("Admin"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Admin";
+                roleManager.Create(role);
+            }
+        }
+    }
+}
