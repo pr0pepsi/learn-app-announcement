@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using Repository.Models;
 
 namespace Announcements.Controllers
@@ -17,7 +19,8 @@ namespace Announcements.Controllers
         // GET: Announcement
         public ActionResult Index()
         {
-            var announcements = db.Announcements.Include(a => a.User);
+            db.Database.Log = message => Trace.WriteLine(message);
+            var announcements = db.Announcements.AsNoTracking();
             return View(announcements.ToList());
         }
 
